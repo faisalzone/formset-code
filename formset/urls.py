@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapp.views import index
+from myapp.views import index, inline_example, book_list, create_book_normal
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('inline/<programmer_id>/', inline_example, name='inline_example'),
+    path('book-list/', book_list, name='book-list'),
+    path('create-normal/', create_book_normal, name='create-normal'),
     path('', index, name='index'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
